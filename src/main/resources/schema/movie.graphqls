@@ -1,0 +1,70 @@
+
+type Query {
+
+	movies(
+		searchMovie: MovieInput
+		
+		sortBy: SortBy = _strtDt
+		subTitle: Boolean = false
+		
+		"""
+		Match and filter Movie based on member fields.
+		"""
+		match: [Match!]
+		
+		"""
+		Number of Movie to be returned in one single page
+		
+		Default - 25
+		"""
+		size: Int = 25
+		"""
+		Page number to be returned.	
+		
+		Default - 1
+		"""
+		page: Int = 1
+		
+		) :[Movie!]
+	
+}
+
+input MovieInput{
+	title: String
+	year: String
+	yearStart: String
+	yearEnd: String
+}
+
+enum Match{
+	TAXFREE
+	BANNED
+}
+
+"""
+
+All fields starting with underscore (_) indicate descending order of the respective fields.
+
+Default - (_clmStrtDt - descending order)
+"""
+
+enum SortBy{
+	strtDt
+	_strtDt 
+	endDt
+	_endDt
+}
+
+
+
+
+type Movie{
+	id: String
+	movieId: String
+	plot: String
+	year: String
+	title: String
+	imdb: [String]
+	fullplot: String
+}
+
