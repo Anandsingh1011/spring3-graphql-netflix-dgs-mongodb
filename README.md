@@ -29,6 +29,6 @@ query getmovies($movieInput1: MovieInput) {
 
 
 # Micrometer-tracing metrics
-http://localhost:8080/actuator/metrics/movies.get
+http://localhost:8080/actuator/metrics/movies.get \
 http://localhost:8080/actuator/metrics/disk.total
 
