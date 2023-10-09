@@ -1,5 +1,5 @@
 # Getting Started
-Sample spring3 graphql application netflix-dgs support and mongodb database
+Sample spring3 graphql application netflix-dgs support and mongodb database with Micrometer-tracing metrics
 
 
 # Prerequisites
