@@ -1,6 +1,14 @@
 # Getting Started
 Sample spring3 graphql application netflix-dgs support and mongodb database
 
+
+# Prerequisites
+* Load below sample data in MongoDB
+```graphql
+   https://www.mongodb.com/docs/atlas/sample-data/sample-mflix/
+```
+
+
 # Graphql Request
 http://localhost:8080/movie/graphql
 
