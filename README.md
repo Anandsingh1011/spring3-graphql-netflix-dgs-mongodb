@@ -4,6 +4,9 @@ Sample spring3 graphql application netflix-dgs support and mongodb database
 # Graphql Request
 http://localhost:8080/movie/graphql
 
+<img title="a title" alt="PostMan Request" src="/image/graphql_req.png">
+
+
 ## Query
 query getmovies($movieInput1: MovieInput) {
     movies(searchMovie: $movieInput1){
