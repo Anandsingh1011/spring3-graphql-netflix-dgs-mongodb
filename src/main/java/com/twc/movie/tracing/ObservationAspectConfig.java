@@ -6,11 +6,6 @@ import io.micrometer.observation.aop.ObservedAspect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
-/**
- * @author Anand Singh
- *
- * 
- */
 @Configuration
 public class ObservationAspectConfig {
 

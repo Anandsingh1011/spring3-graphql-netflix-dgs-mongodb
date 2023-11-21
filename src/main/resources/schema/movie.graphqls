@@ -26,7 +26,7 @@ type Query {
 		page: Int = 1
 		
 		) :[Movie!]
-	
+	metaData: MetaData
 }
 
 input MovieInput{
@@ -34,6 +34,8 @@ input MovieInput{
 	year: String
 	yearStart: String
 	yearEnd: String
+	id: String
+	type: String
 }
 
 enum Match{
@@ -42,6 +44,7 @@ enum Match{
 }
 
 """
+List of Movie fields that can be used to sort the returned response. User must send only the fields listed in this enumeration for the input param 'sortBy' in the query request.
 
 All fields starting with underscore (_) indicate descending order of the respective fields.
 
@@ -55,7 +58,28 @@ enum SortBy{
 	_endDt
 }
 
+type MetaData{
+	page: Page
+}
 
+type Page{
+	"""
+	Total Movie returned in a given Page (Default - 25 ). User can request for a particular page by sending the 'size' param in the query request. 
+	"""
+	size: Int!
+	"""
+	Total Movie exist for a given query request.
+	"""
+	totalElements: Int!
+	"""
+	Total pages exist for a given request. This is calculated based on the 'size' param in the request/default value.
+	"""
+	totalPages: Int!
+	"""
+	Current page number
+	"""
+	number: Int!
+}
 
 
 type Movie{
@@ -66,5 +90,15 @@ type Movie{
 	title: String
 	imdb: [String]
 	fullplot: String
+	comments: [Comments]
+}
+
+type Comments{
+	id: String
+	name: String
+	email: String
+	movie_id: String
+	text: String
+	
 }
 

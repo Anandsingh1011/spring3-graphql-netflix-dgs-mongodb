@@ -1,10 +1,12 @@
 spring:
   application:
-    name: movieFlix
+    name: movieflix
   data:
     mongodb:
-      uri: mongodb://localhost:27017
-      database: movie
+      uri: mongodb://localhost:27017/mflix
+      database: mflix
+
+
       
 # All traces should be sent to latency analysis tool
 #management.tracing.sampling.probability: 1.0
@@ -12,8 +14,6 @@ spring:
 management.endpoints.web.exposure.include: "*"
 management.endpoints.health.show-details: always     
 
-
-            
 dgs:
   graphql:
     path: /movie/graphql
@@ -23,13 +23,8 @@ dgs:
     - classpath*:schema/**/*.graphql*
     graphiql:
       enabled: true
-      title: movieFlix
-       
+      title: Movie Application  
+
 logging:
   level:
-    org:
-      springframework:
-        data:
-          mongodb:
-            core:
-              MongoTemplate: DEBUG
+    root: info

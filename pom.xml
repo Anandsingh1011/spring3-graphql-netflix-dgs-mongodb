@@ -22,7 +22,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<java.source.version></java.source.version>
 		<java.target.version>17</java.target.version>
+		
 		<org.mapstruct.version>1.5.5.Final</org.mapstruct.version>
+		<kotlin.version>1.6.21</kotlin.version>
+		<graphql.version>12.0.0</graphql.version>
+		<drools.version>7.15.0.Final</drools.version>
+		<!-- 16.0.0 not on central -->
 		<graphql.extended.scalars.version>19.0
 		</graphql.extended.scalars.version>
 		<graphql.extended.validation.version>16.0.0
@@ -49,6 +54,9 @@
 			<dependency>
 				<groupId>com.netflix.graphql.dgs</groupId>
 				<artifactId>graphql-dgs-platform-dependencies</artifactId>
+				<!-- The DGS BOM/platform dependency. This is the only place you
+				set 
+					version of DGS -->
 				<version>${dgs.framework.version}</version>
 				<type>pom</type>
 				<scope>import</scope>
@@ -99,10 +107,11 @@
 		<dependency>
 			<groupId>org.apache.commons</groupId>
 			<artifactId>commons-lang3</artifactId>
-
 		</dependency>
-
-
+		<dependency>
+			<groupId>com.netflix.graphql.dgs</groupId>
+			<artifactId>graphql-dgs-spring-boot-micrometer</artifactId>
+		</dependency>
 		<dependency>
 			<groupId>org.projectlombok</groupId>
 			<artifactId>lombok</artifactId>
@@ -180,12 +189,50 @@
 			<artifactId>spring-boot-starter-aop</artifactId>
 		</dependency>
 		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+		</dependency>
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-mongodb-reactive</artifactId>
+			<exclusions>
+				<exclusion>
+					<groupId>org.springframework.boot</groupId>
+					<artifactId>spring-boot-starter-tomcat</artifactId>
+				</exclusion>
+			</exclusions>
+		</dependency> -->
+
+		<!-- <dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-undertow</artifactId>
+		</dependency> -->
+		<!-- <dependency> <groupId>org.springframework.data</groupId>
+		<artifactId>spring-data-mongodb</artifactId> 
+			</dependency> -->
+		<!--
+		https://mvnrepository.com/artifact/io.micrometer/micrometer-tracing-bridge-brave -->
+		<dependency>
 			<groupId>io.micrometer</groupId>
 			<artifactId>micrometer-tracing-bridge-brave</artifactId>
 			<version>1.1.5</version>
 		</dependency>
+		<!--
+		https://mvnrepository.com/artifact/io.projectreactor.tools/blockhound -->
+		<dependency>
+			<groupId>io.projectreactor.tools</groupId>
+			<artifactId>blockhound</artifactId>
+			<version>1.0.8.RELEASE</version>
+		</dependency>
 
 
+		<!--<dependency>
+			<groupId>com.boottech</groupId>
+			<artifactId>
+				spring-boot-mongodb-reactive-multi-tenancy
+			</artifactId>
+			<version>0.0.1-SNAPSHOT</version>
+		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -249,6 +296,7 @@
 				<version>1.30</version>
 				<executions>
 					<execution>
+						<id>Gen-1</id>
 						<goals>
 							<goal>generate</goal>
 						</goals>

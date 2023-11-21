@@ -4,17 +4,12 @@ import io.micrometer.observation.Observation;
 import io.micrometer.observation.ObservationHandler;
 import lombok.extern.slf4j.Slf4j;
 
-/**
- * @author Anand Singh
- *
- * 
- */
 @Slf4j
 public class PerformanceTrackerHandler implements ObservationHandler<Observation.Context> {
 
     @Override
     public void onStart(Observation.Context context) {
-        log.info("execution started {}", context.getName());
+        log.info("Method execution started {}", context.getName());
         context.put("time", System.currentTimeMillis());
     }
 
@@ -46,10 +41,11 @@ public class PerformanceTrackerHandler implements ObservationHandler<Observation
     @Override
     public void onStop(Observation.Context context) {
         log.info(
-                "execution stopped "
+                "Method execution stopped "
                         + context.getName()
                         + " duration "
-                        + (System.currentTimeMillis() - context.getOrDefault("time", 0L)));
+                        + (System.currentTimeMillis() - context.getOrDefault("time", 0L))
+                        + " ms");
     }
 
 

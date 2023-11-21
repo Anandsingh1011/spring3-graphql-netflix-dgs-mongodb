@@ -1,0 +1,10 @@
+vendors:
+  datasources:
+    - id: vendor1
+      host: localhost
+      port: 27017
+      database: mflix
+      username: admin
+      password: admin
+    
+      

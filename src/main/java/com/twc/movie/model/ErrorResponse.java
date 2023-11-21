@@ -2,11 +2,6 @@ package com.twc.movie.model;
 
 import lombok.*;
 
-/**
- * @author Anand Singh
- *
- * 
- */
 @Data
 @AllArgsConstructor
 @NoArgsConstructor

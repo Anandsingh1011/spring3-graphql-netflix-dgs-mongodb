@@ -10,11 +10,6 @@ import com.netflix.graphql.dgs.reactive.DgsReactiveCustomContextBuilderWithReque
 
 import reactor.core.publisher.Mono;
 
-/**
- * @author Anand Singh
- *
- * 
- */
 @Component
 public class MovieReactiveDgsContext implements DgsReactiveCustomContextBuilderWithRequest<MovieContext> {
 
